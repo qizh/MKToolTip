@@ -95,6 +95,8 @@ public extension UIBarItem {
 			}
 			@objc public var gradientLocations: [CGFloat] = [0.05, 1.0]
 			@objc public var gradientColors: [UIColor] = [UIColor.clear, UIColor.black.withAlphaComponent(0.4)]
+			
+			@objc public var statusBarStyle:UIStatusBarStyle = .default
 		}
 		
 		@objc public var arrow: Arrow = Arrow()
@@ -305,7 +307,8 @@ open class MKToolTip: UIView {
 	
 	fileprivate var timer:Timer?
 	fileprivate func show() {
-		let viewController = UIViewController()
+		let viewController = UIViewControllerWithStatusBarColorSetting()
+		viewController.statusBarStyle = preferences.drawing.background.statusBarStyle
 		viewController.view.alpha = 0
 		viewController.view.addSubview(self)
 		
@@ -522,3 +525,9 @@ private class RadialGradientBackgroundLayer: CALayer {
 	}
 }
 
+fileprivate class UIViewControllerWithStatusBarColorSetting: UIViewController {
+	fileprivate var statusBarStyle:UIStatusBarStyle?
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return statusBarStyle ?? super.preferredStatusBarStyle
+	}
+}
