@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.authors = { "Metin Kilicaslan" => 'metinkilicaslan@gmail.com' }
 
   spec.ios.deployment_target = "9.3"
-  spec.swift_version = "4.2"
+  spec.swift_version = "5.0"
   spec.requires_arc = true
   spec.source = { :git => "https://github.com/metinkilicaslan/MKToolTip.git", :tag => "v#{spec.version}"}
   spec.source_files = "MKToolTip/MKToolTip/*.{h,swift}"
